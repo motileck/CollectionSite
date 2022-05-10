@@ -1,0 +1,41 @@
+﻿@using CollectionSite.Utility.Extensions
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model SignUpViewModel 
+
+<body>
+<div class="container">
+    <section class="row justify-content-center">
+        <section class="col-12 col-sm-8 col-md-4">
+            <form class="form-container" asp-controller="Account" asp-action="SignUp" asp-route-returnUrl="@Context.Request.Query.ReturnUrl()" method="post">
+                <div class="text" asp-validation-summary="ModelOnly"></div>
+
+                <div class="form-group text">
+                    <label class="col-form-label" asp-for="Name"></label>
+                    <input class="form-control" asp-for="Name" />
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+
+                <div class="form-group text">
+                    <label class="col-form-label" asp-for="Email"></label>
+                    <input class="form-control" asp-for="Email" />
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+
+                <div class="form-group text">
+                    <label class="col-form-label" asp-for="Password"></label>
+                    <input class="form-control" asp-for="Password" />
+                    <span class="text-danger" asp-validation-for="Password"></span>
+                </div>
+
+                <div class="form-group text">
+                    <label class="col-form-label" asp-for="ConfirmPassword"></label>
+                    <input class="form-control" asp-for="ConfirmPassword" />
+                    <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                </div>
+
+                <button class="btn btn-block mb-3 button-outline" type="submit">Sign up</button>
+            </form>
+        </section>
+    </section>
+</div>
+</body>
