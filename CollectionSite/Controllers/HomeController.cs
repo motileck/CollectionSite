@@ -18,6 +18,7 @@ namespace CollectionSite.Controllers
         [Route("")]
         public IActionResult Index()
         {
+
             return View();
         }
         

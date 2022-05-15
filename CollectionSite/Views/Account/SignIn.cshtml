@@ -27,16 +27,16 @@
                 </div>
 
                 <div class="form-group text">
-                    <label class="col-form-label" asp-for="IsPersistent"></label>
+                    <label class="col-form-label" asp-for="IsPersistent">Is Persistent</label>
                     <input class="col-form-label" asp-for="IsPersistent" />
                 </div>
 
-                <button class="btn-block button-outline" type="submit">
-                    "SignIn"
+                <button class="btn btn-primary" type="submit">
+                    Sign In
                 </button>
 
-                <a class="btn-block button-outline" asp-controller="Account" asp-action="SignUp" asp-all-route-data="@routeData">
-                    "SignUp"
+                <a class="btn btn-link" asp-controller="Account" asp-action="SignUp" asp-all-route-data="@routeData">
+                    Sign Up
                 </a>
             </form>
         </section>

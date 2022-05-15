@@ -1,4 +1,5 @@
-﻿using CollectionSite.Data.Entities;
+﻿using CollectionSite.Data;
+using CollectionSite.Data.Entities;
 using CollectionSite.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -7,11 +8,13 @@ namespace CollectionSite.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly ApplicationDbContext _context;
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(ApplicationDbContext context, UserManager<User> userManager, SignInManager<User> signInManager)
         {
+            _context = context;
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
@@ -34,13 +37,13 @@ namespace CollectionSite.Controllers
 
             if (user is null)
             {
-                ModelState.AddModelError(string.Empty, "User does not exist");
+                ModelState.AddModelError(string.Empty, "Users does not exist");
                 return View(model);
             }
 
             if (!user.IsActive)
             {
-                ModelState.AddModelError(string.Empty, "User is blocked");
+                ModelState.AddModelError(string.Empty, "Users is blocked");
                 return View(model);
             }
 
@@ -60,6 +63,13 @@ namespace CollectionSite.Controllers
         {
             if (!ModelState.IsValid)
             {
+                return View(model);
+            }
+
+            var isEmailExist = _context.Users.Any(u => u.Email == model.Email);
+            if (isEmailExist)
+            {
+                ModelState.AddModelError(string.Empty, "such an Email already exists");
                 return View(model);
             }
 

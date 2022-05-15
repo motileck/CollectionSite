@@ -8,7 +8,7 @@ namespace CollectionSite.Controllers
     public class AdminController : Controller
     {
         [HttpGet("admin")]
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }

@@ -1,5 +1,6 @@
 using CollectionSite.Data;
 using CollectionSite.Data.Entities;
+using CollectionSite.Models;
 using CollectionSite.Utility.Constants;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TrustConnection")));
+
 
 builder.Services.AddAuthorization(p =>
 {

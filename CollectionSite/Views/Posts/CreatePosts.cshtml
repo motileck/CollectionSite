@@ -1,0 +1,23 @@
+﻿@using CollectionSite.Models
+@model CreatePostsViewModel
+
+    <div class="container-fluid">
+        <form class="form-container" asp-controller="Posts" asp-action="CreatePosts" method="post">
+        <div>
+            <button class="btn btn-primary" type="submit">
+                Create
+            </button>
+        </div>
+            <div class="form-group text">
+                <label class="col-form-label" asp-for="Title"></label>
+                <input class="form-control" asp-for="Title"/>
+                <span class="text-danger" asp-validation-for="Title"></span>
+            </div>
+            <div class="form-group text">
+                <label class="col-form-label" asp-for="Content"></label>
+                <input class="form-control" asp-for="Content"/>
+                <span class="text-danger" asp-validation-for="Content"></span>
+            </div>
+
+        </form>
+    </div>
